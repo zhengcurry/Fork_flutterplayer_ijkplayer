@@ -577,6 +577,17 @@ typedef struct FFPlayer {
     int64_t start_pts;                  // 开始录制pts
     int64_t start_dts;                  // 开始录制dts
 
+    int is_screenshot;//是否截图,是一次性的，一次只能截一张图
+    char *screen_file_name;//输出图片的路径 screen_file_name;//截图保存地址
+
+    int64_t start_v_pts;                // 开始录制时pts 视频
+    int64_t start_v_dts;                // 开始录制时dts 视频
+    int64_t start_a_pts;                // 开始录制时pts 音频
+    int64_t start_a_dts;                // 开始录制时dts 音频
+
+    int64_t current_v_pts;              //记录下当前的pts和dts
+    int64_t current_v_dts;
+
     /* ffplay options specified by the user */
 #ifdef FFP_MERGE
     AVInputFormat *file_iformat;

@@ -28,6 +28,7 @@
 #include "ff_ffplay_def.h"
 #include "ff_fferror.h"
 #include "ff_ffmsg.h"
+#include "j4a/j4a_base.h"
 
 void      ffp_global_init();
 void      ffp_global_uninit();
@@ -123,5 +124,11 @@ int       ffp_record_file(FFPlayer *ffp, AVPacket *packet);
 
 // must be freed with free();
 struct IjkMediaMeta *ffp_get_meta_l(FFPlayer *ffp);
+
+//申明录制视频、截图相关方法
+void      ffp_get_current_frame_l(FFPlayer *ffp, uint8_t *frame_buf);
+int       ffp_starting(FFPlayer *ffp);
+//int       ffp_get_current_frame(FFPlayer *ffp, const char *out_file);
+AVStream			*m_vStream;
 
 #endif
