@@ -125,7 +125,7 @@
 #define AUDIO_DIFF_AVG_NB   20
 
 /* polls for possible required screen refresh at least this often, should be less than 1/fps */
-#define REFRESH_RATE 0.01
+#define REFRESH_RATE 0.005
 
 /* NOTE: the size must be big enough to compensate the hardware audio buffersize size */
 /* TODO: We assume that a decoded and resampled frame fits into this buffer */
@@ -785,7 +785,7 @@ inline static void ffp_reset_internal(FFPlayer *ffp)
     ffp->loop                   = 1;
     ffp->framedrop              = 0; // option
     ffp->seek_at_start          = 0;
-    ffp->infinite_buffer        = -1;
+    ffp->infinite_buffer        = 0;
     ffp->show_mode              = SHOW_MODE_NONE;
     av_freep(&ffp->audio_codec_name);
     av_freep(&ffp->video_codec_name);
@@ -830,7 +830,7 @@ inline static void ffp_reset_internal(FFPlayer *ffp)
 
     ffp->playable_duration_ms           = 0;
 
-    ffp->packet_buffering               = 1;
+    ffp->packet_buffering               = 0;
     ffp->pictq_size                     = VIDEO_PICTURE_QUEUE_SIZE_DEFAULT; // option
     ffp->max_fps                        = 31; // option
 
