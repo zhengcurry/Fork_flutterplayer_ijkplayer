@@ -587,6 +587,7 @@ typedef struct FFPlayer {
 
     int64_t current_v_pts;              //记录下当前的pts和dts
     int64_t current_v_dts;
+    int record_starting;                // 从关键帧开始录制
 
     /* ffplay options specified by the user */
 #ifdef FFP_MERGE
