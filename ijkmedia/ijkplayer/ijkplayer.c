@@ -866,32 +866,3 @@ int ijkmp_stop_record(IjkMediaPlayer *mp)
             MPTRACE("ijkmp_stopRecord()=%d\n", retval);
     return retval;
 }
-
-static void ijkmp_get_current_frame_l(IjkMediaPlayer *mp, uint8_t *frame_buf)
-{
-    ffp_get_current_frame_l(mp->ffplayer, frame_buf);
-}
-
-void ijkmp_get_current_frame(IjkMediaPlayer *mp, uint8_t *frame_buf)
-{
-    assert(mp);
-    pthread_mutex_lock(&mp->mutex);
-    ijkmp_get_current_frame_l(mp, frame_buf);
-    pthread_mutex_unlock(&mp->mutex);
-}
-
-
-int ijkmp_record_starting(IjkMediaPlayer *mp)
-{
-    return mp->ffplayer->record_starting;
-}
-
-/*int ijkmp_get_current_frame(IjkMediaPlayer* mp,const char* file_name) {
-	assert(mp);
-	MPTRACE("ijkmp_get_current_frament()\n");
-	pthread_mutex_lock(&mp->mutex);
-	int retval = ffp_get_current_frame(mp->ffplayer, file_name);
-	pthread_mutex_unlock(&mp->mutex);
-	MPTRACE("ijkmp_get_current_frament()=%d\n", retval);
-	return retval;
-}*/
